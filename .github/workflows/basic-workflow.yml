@@ -12,7 +12,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
@@ -43,7 +42,7 @@ publish_in_dockerhub:
     - name: Login to Dockerhub
       run: docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" -p "${{ secrets.DOCKERHUB_TOKEN }}"
     - name: Build the Docker image
-      run: docker build -t "${{ secrets.DOCKERHUB_USERNAME }}"/items:${{ steps.version.outputs.tag }}
+      run: docker build -t "${{ secrets.DOCKERHUB_USERNAME }}"/items:${{ steps.version.outputs.tag }} .
     - name: Publish in Dockerhub
       run: docker push "${{ secrets.DOCKERHUB_USERNAME }}"/items:${{ steps.version.outputs.tag }}
 
