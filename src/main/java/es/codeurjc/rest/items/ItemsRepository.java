@@ -44,6 +44,7 @@ public class ItemsRepository {
     public Item postItem(Item item){
         long id = lastId.incrementAndGet();
 		item.setId(id);
+        item.setDescription("falla");
 		items.put(id, item);
 		return item;
     }
